@@ -1,0 +1,33 @@
+# 复制为 settings.local.toml；密钥建议用环境变量提供。
+[model]
+base_url = ""
+model = ""
+api_key_env = "LITERATUREQA_API_KEY"
+timeout_seconds = 90
+max_attempts = 2
+max_output_tokens = 2048
+
+# 每个角色可覆盖 model 中的配置；未填字段继承公共配置。
+[roles.decompose]
+[roles.extract]
+[roles.judge]
+[roles.synthesize]
+
+[pipeline]
+top_k = 10
+paper_concurrency = 8
+model_concurrency = 8
+max_subquestions = 6
+threshold_n = 0.5
+threshold_k = 0.5
+passage_count = 5
+passage_chars = 1600
+passage_overlap = 200
+max_abstract_chars = 4000
+max_final_evidence_chars = 30000
+
+[retrieval]
+mode = "bm25"
+rrf_constant = 60
+embedding_model = "intfloat/multilingual-e5-small"
+device = "cpu"
